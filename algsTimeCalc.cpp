@@ -111,4 +111,9 @@ int main()
         cout<<endl;
     }
     while (s == "y" || s == "Y");
+
+    delete[] a;
+    a = NULL;
+    delete[] b;
+    b = NULL;
 }
