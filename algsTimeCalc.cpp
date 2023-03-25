@@ -113,7 +113,7 @@ int main()
     while (s == "y" || s == "Y");
 
     delete[] a;
-    a = NULL;
+    a = nullptr;
     delete[] b;
-    b = NULL;
+    b = nullptr;
 }
