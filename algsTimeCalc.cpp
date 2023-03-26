@@ -24,7 +24,7 @@ void arrayCopy(int *a, int *b, int n) //copy array b[] to array a[].
 }
 void menu()
 {
-    cout<<"-----------MENU-----------"<<endl;
+    cout<<"\n-----------MENU-----------"<<endl;
     cout<<"1. Quick Sort."<<endl;
     cout<<"2. Merge Sort."<<endl;
     cout<<"3. Binary Insertion Sort."<<endl;
@@ -108,7 +108,6 @@ int main()
             cout<<"Please type Y or N: ";
             getline(cin, s);
         }
-        cout<<endl;
     }
     while (s == "y" || s == "Y");
 
