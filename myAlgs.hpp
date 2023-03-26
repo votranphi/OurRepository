@@ -166,6 +166,7 @@ void binaryInsertionSort(int *a, int n)
         {
             a[j+1] = a[j];
         }
+
         a[left] = x;
     }
 }
