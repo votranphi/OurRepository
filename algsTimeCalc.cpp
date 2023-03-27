@@ -32,6 +32,7 @@ void menu()
     cout<<"5. Bubble Sort."<<endl;
     cout<<"6. Selection Sort."<<endl;
     cout<<"7. Shell Sort."<<endl;
+    cout<<"8. Interchange Sort."<<endl;
 }
 
 int main()
@@ -51,7 +52,7 @@ int main()
 
         cout<<"Please choose one algorithm which you want to calculate the processing time: ";
         cin>>choose;
-        while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5 && choose != 6 && choose != 7)
+        while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5 && choose != 6 && choose != 7 && choose != 8)
         {
             cout<<"There's no algorithm number "<<choose<<". Please choose again: ";
             cin>>choose;
@@ -96,14 +97,14 @@ int main()
                 shellSort(a, n);
                 end = clock();
                 break;
+            case 8:
+                start = clock();
+                interchangeSort(a, n);
+                end = clock();
+                break;
         }
 
         cout<<"Processing time: "<<(double)(end - start) / 1000<<"s"<<endl;
-
-        for (int i = 0; i < n; i++)
-        {
-            cout<<a[i]<<" ";
-        }
 
         cout<<"Do you want to continue (type Y or N): ";
         cin.ignore();
