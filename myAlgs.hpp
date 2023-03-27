@@ -68,6 +68,7 @@ void merge(int *a, int left, int mid, int right)
     }
 
     delete[] temp;
+    temp = nullptr;
 }
 void mergeSort(int *a, int left, int right)
 {
