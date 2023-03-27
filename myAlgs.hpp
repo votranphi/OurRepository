@@ -188,14 +188,23 @@ void selectionSort(int *a, int n)
 }
 void bubbleSort(int *a, int n)
 {
+    bool flag;
     for (int i = 1; i < n; i++)
     {
+        flag = false;
+
         for (int j = 0; j < n - i; j++)
         {
             if (a[j] > a[j+1])
             {
                 swap(a[j], a[j+1]);
+                flag = true;
             }
+        }
+
+        if (flag = false)
+        {
+            break;
         }
     }
 }
