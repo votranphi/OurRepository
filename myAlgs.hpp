@@ -1,8 +1,8 @@
 void swap(int &a, int &b)
 {
-    int temp = a;
-    a = b;
-    b = temp;
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
 }
 void quickSort(int *a, int left, int right)
 {
@@ -219,6 +219,19 @@ void shellSort(int *a, int n)
                 }
             }
             a[j] = temp;
+        }
+    }
+}
+void interchangeSort(int *a, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (a[i] > a[j])
+            {
+                swap(a[i], a[j]);
+            }
         }
     }
 }

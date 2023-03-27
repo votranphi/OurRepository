@@ -6,7 +6,7 @@ using namespace std;
 
 int getInteger()
 {
-    return 1000000 + rand()%1000001;
+    return 10000 + rand()%10001;
 }
 void generateArray(int *a, int n)
 {
@@ -99,6 +99,11 @@ int main()
         }
 
         cout<<"Processing time: "<<(double)(end - start) / 1000<<"s"<<endl;
+
+        for (int i = 0; i < n; i++)
+        {
+            cout<<a[i]<<" ";
+        }
 
         cout<<"Do you want to continue (type Y or N): ";
         cin.ignore();
