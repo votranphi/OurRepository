@@ -313,7 +313,7 @@ void countingSort(int *a, int n)
     int min = minElement(a, n);
     int range = max - min + 1;
 
-    int *count = new int [range + 1];
+    int *count = new int [range];
     int *temp = new int [n];
 
     for (int i = 0; i < range; i++)
