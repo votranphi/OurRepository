@@ -191,11 +191,11 @@ void bubbleSort(int *a, int n)
 {
     bool flag;
 
-    for (int i = 1; i < n; i++)
+    for (int step = 1; step < n; step++)
     {
         flag = false;
 
-        for (int j = 0; j < n - i; j++)
+        for (int j = 0; j < n - step; j++)
         {
             if (a[j] > a[j+1])
             {
@@ -252,11 +252,11 @@ void cocktailSort(int *a, int n) //or shakerSort
     bool flag;
     int j;
 
-    for (int i = 1; i <= n / 2; i++)
+    for (int step = 1; step <= n / 2; step++)
     {
         flag = false;
 
-        for (j = i - 1; j < n - i; j++)
+        for (j = step - 1; j < n - step; j++)
         {
             if (a[j] > a[j+1])
             {
@@ -270,7 +270,7 @@ void cocktailSort(int *a, int n) //or shakerSort
             break;
         }
 
-        for (j; j > i - 1; j--)
+        for (j; j > step - 1; j--)
         {
             if (a[j] < a[j-1])
             {
