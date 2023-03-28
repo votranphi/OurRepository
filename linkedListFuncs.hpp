@@ -77,31 +77,41 @@ void addTail(List &list, int value)
 //     newNode->next = temp->next;
 //     temp->next = newNode;
 // }
-void addBefore(List &list, int target, int value) //unfixed
+void addBefore(List &list, int target, int value)
 {
     Node *temp = list.head;
     Node *newNode = createNode(value);
 
-    while (temp->data != target)
+    if (temp->data == target)
+    {
+        addHead(list, value);
+        return;
+    }
+
+    while (temp->next->data != target)
     {
         temp = temp->next;
     }
 
-    newNode->next = temp;
-    temp = newNode;
+    newNode->next = temp->next;
+    temp->next = newNode;
 }
-void deleteNode(List &list, int target) //unfixed
+void deleteNode(List &list, int target)
 {
     Node *temp = list.head;
-    Node *newNode = createNode(target);
 
-    while (temp->data != target)
+    if (temp->data == target)
+    {
+        list.head = list.head->next;
+        return;
+    }
+
+    while (temp->next->data != target)
     {
         temp = temp->next;
     }
 
-    newNode = temp->next;
-    temp->next = newNode;
+    temp->next = temp->next->next;
 }
 void printList(List list)
 {
