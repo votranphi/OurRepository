@@ -6,13 +6,13 @@ using namespace std;
 
 int getInteger()
 {
-    return 100000 + rand()%100001;
+    return 1000000 + rand()%1000001;
 }
 void generateArray(int *a, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        a[i] = pow(-1, rand() % 2) * rand();
+        a[i] = pow(1, rand() % 2) * rand();
     }
 }
 void arrayCopy(int *a, int *b, int n) //copy array b[] to array a[].
@@ -25,15 +25,16 @@ void arrayCopy(int *a, int *b, int n) //copy array b[] to array a[].
 void menu()
 {
     cout<<"\n-----------MENU-----------"<<endl;
-    cout<<"1. Quick Sort."<<endl;
-    cout<<"2. Merge Sort."<<endl;
-    cout<<"3. Binary Insertion Sort."<<endl;
-    cout<<"4. Insertion Sort."<<endl;
-    cout<<"5. Bubble Sort."<<endl;
-    cout<<"6. Selection Sort."<<endl;
-    cout<<"7. Shell Sort."<<endl;
-    cout<<"8. Interchange Sort."<<endl;
-    cout<<"9. Cocktail/Shaker Sort."<<endl;
+    cout<<"01. Quick Sort."<<endl;
+    cout<<"02. Merge Sort."<<endl;
+    cout<<"03. Binary Insertion Sort."<<endl;
+    cout<<"04. Insertion Sort."<<endl;
+    cout<<"05. Bubble Sort."<<endl;
+    cout<<"06. Selection Sort."<<endl;
+    cout<<"07. Shell Sort."<<endl;
+    cout<<"08. Interchange Sort."<<endl;
+    cout<<"09. Cocktail/Shaker Sort."<<endl;
+    cout<<"10. Counting Sort."<<endl;
 }
 
 int main()
@@ -53,7 +54,7 @@ int main()
 
         cout<<"Please choose one algorithm which you want to calculate the processing time: ";
         cin>>choose;
-        while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5 && choose != 6 && choose != 7 && choose != 8 && choose != 9)
+        while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5 && choose != 6 && choose != 7 && choose != 8 && choose != 9 && choose != 10)
         {
             cout<<"There's no algorithm number "<<choose<<". Please choose again: ";
             cin>>choose;
@@ -106,6 +107,11 @@ int main()
             case 9:
                 start = clock();
                 cocktailSort(a, n);
+                end = clock();
+                break;
+            case 10:
+                start = clock();
+                countingSort(a, n);
                 end = clock();
                 break;
         }
