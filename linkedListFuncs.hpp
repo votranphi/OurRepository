@@ -134,9 +134,12 @@ void printList(List list)
 }
 void destroyList(List &list)
 {
+    Node *temp = list.head;
+
     while (list.head != nullptr)
     {
-        delete list.head;
         list.head = list.head->next;
+        delete temp;
+        temp = list.head;
     }
 }
