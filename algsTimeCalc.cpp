@@ -6,7 +6,7 @@ using namespace std;
 
 int getInteger()
 {
-    return 1000000 + rand()%1000001;
+    return 100000 + rand()%100001;
 }
 void generateArray(int *a, int n)
 {
