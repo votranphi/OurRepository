@@ -33,6 +33,7 @@ void menu()
     cout<<"6. Selection Sort."<<endl;
     cout<<"7. Shell Sort."<<endl;
     cout<<"8. Interchange Sort."<<endl;
+    cout<<"9. Cocktail Sort."<<endl;
 }
 
 int main()
@@ -52,7 +53,7 @@ int main()
 
         cout<<"Please choose one algorithm which you want to calculate the processing time: ";
         cin>>choose;
-        while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5 && choose != 6 && choose != 7 && choose != 8)
+        while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5 && choose != 6 && choose != 7 && choose != 8 && choose != 9)
         {
             cout<<"There's no algorithm number "<<choose<<". Please choose again: ";
             cin>>choose;
@@ -100,6 +101,11 @@ int main()
             case 8:
                 start = clock();
                 interchangeSort(a, n);
+                end = clock();
+                break;
+            case 9:
+                start = clock();
+                cocktailSort(a, n);
                 end = clock();
                 break;
         }

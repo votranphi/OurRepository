@@ -190,6 +190,7 @@ void selectionSort(int *a, int n)
 void bubbleSort(int *a, int n)
 {
     bool flag;
+
     for (int i = 1; i < n; i++)
     {
         flag = false;
@@ -203,7 +204,7 @@ void bubbleSort(int *a, int n)
             }
         }
 
-        if (flag = false)
+        if (flag == false)
         {
             break;
         }
@@ -212,6 +213,7 @@ void bubbleSort(int *a, int n)
 void shellSort(int *a, int n)
 {
     int temp, j;
+
     for (int gap = n / 2; gap > 0; gap /= 2)
     {
         for (int i = gap; i < n; i++)
@@ -241,6 +243,38 @@ void interchangeSort(int *a, int n)
             if (a[j] < a[i])
             {
                 swap(a[i], a[j]);
+            }
+        }
+    }
+}
+void cocktailSort(int *a, int n) //or shakerSort
+{
+    bool flag;
+    int j;
+
+    for (int i = 1; i <= n / 2; i++)
+    {
+        flag = false;
+
+        for (j = i - 1; j < n - i; j++)
+        {
+            if (a[j] > a[j+1])
+            {
+                swap(a[j], a[j+1]);
+                flag = true;
+            }
+        }
+
+        if (flag == false)
+        {
+            break;
+        }
+
+        for (j; j > i - 1; j--)
+        {
+            if (a[j] < a[j-1])
+            {
+                swap(a[j], a[j-1]);
             }
         }
     }
