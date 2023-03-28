@@ -33,7 +33,7 @@ void menu()
     cout<<"6. Selection Sort."<<endl;
     cout<<"7. Shell Sort."<<endl;
     cout<<"8. Interchange Sort."<<endl;
-    cout<<"9. Cocktail Sort."<<endl;
+    cout<<"9. Cocktail/Shaker Sort."<<endl;
 }
 
 int main()
