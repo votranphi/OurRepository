@@ -119,7 +119,6 @@ void deleteTail(List &list)
 void deleteNode(List &list, int target)
 {
     Node *temp = list.head;
-    Node *temp1;
 
     if (temp->data == target)
     {
@@ -132,7 +131,7 @@ void deleteNode(List &list, int target)
         temp = temp->next;
     }
 
-    temp1 = temp->next;
+    Node *temp1 = temp->next;
     temp->next = temp->next->next;
     delete temp1;
 }
