@@ -64,19 +64,19 @@ void addTail(List &list, int value)
         list.tail = newNode;
     }
 }
-// void addAfter(List &list, int target, int value)
-// {
-//     Node *temp = list.head;
-//     Node *newNode = createNode(value);
+void addAfter(List &list, int target, int value)
+{
+    Node *temp = list.head;
+    Node *newNode = createNode(value);
 
-//     while (temp->data != target)
-//     {
-//         temp = temp->next;
-//     }
+    while (temp->data != target)
+    {
+        temp = temp->next;
+    }
 
-//     newNode->next = temp->next;
-//     temp->next = newNode;
-// }
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
 void addBefore(List &list, int target, int value)
 {
     Node *temp = list.head;
@@ -96,6 +96,26 @@ void addBefore(List &list, int target, int value)
     newNode->next = temp->next;
     temp->next = newNode;
 }
+void deleteHead(List &list)
+{
+    Node *temp = list.head;
+    list.head = list.head->next;
+    delete temp;
+}
+void deleteTail(List &list)
+{
+    Node *temp = list.head;
+    
+    while (temp->next != list.tail)
+    {
+        temp = temp->next;
+    }
+
+    Node *temp1 = list.tail;
+    temp->next = nullptr;
+    list.tail = temp;
+    delete temp1;
+}
 void deleteNode(List &list, int target)
 {
     Node *temp = list.head;
@@ -103,9 +123,7 @@ void deleteNode(List &list, int target)
 
     if (temp->data == target)
     {
-        temp1 = list.head;
-        list.head = list.head->next;
-        delete temp1;
+        deleteHead(list);
         return;
     }
 
