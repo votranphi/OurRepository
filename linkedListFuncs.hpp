@@ -99,10 +99,13 @@ void addBefore(List &list, int target, int value)
 void deleteNode(List &list, int target)
 {
     Node *temp = list.head;
+    Node *temp1;
 
     if (temp->data == target)
     {
+        temp1 = list.head;
         list.head = list.head->next;
+        delete temp1;
         return;
     }
 
@@ -111,7 +114,9 @@ void deleteNode(List &list, int target)
         temp = temp->next;
     }
 
+    temp1 = temp->next;
     temp->next = temp->next->next;
+    delete temp1;
 }
 void printList(List list)
 {
