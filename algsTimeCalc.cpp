@@ -12,7 +12,7 @@ void generateArray(int *a, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        a[i] = pow(1, rand() % 2) * rand();
+        a[i] = pow(-1, rand() % 2) * rand();
     }
 }
 void arrayCopy(int *a, int *b, int n) //copy array b[] to array a[].

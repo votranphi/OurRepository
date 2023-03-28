@@ -315,6 +315,7 @@ void countingSort(int *a, int n)
     int range = max - min + 1;
 
     int *count = new int [range + 1];
+    int *temp = new int [n];
 
     for (int i = 0; i < range; i++)
     {
@@ -331,26 +332,24 @@ void countingSort(int *a, int n)
         count[i] += count[i-1];
     }
 
-    for (int i = range - 1; i >= 0; i--)
+    for (int i = range - 2; i >= 0; i--)
     {
         count[i+1] = count[i];
     }
     count[0] = 0;
 
-    for (int i = 0; i < range; i++) //change the sort idea from here.
+    for (int i = 0; i < n; i++) //visualize to understand.
     {
-        if (count[i] + 1 == count[i+1] || count[i] == count[i+1])
-        {
-            a[count[i]] = i + min;
-            continue;
-        }
+        temp[count[a[i] - min]++] = a[i];
+    }
 
-        while (count[i] + 1 <= count[i+1])
-        {
-            a[count[i]++] = i + min;
-        }
+    for (int i = 0; i < n; i++)
+    {
+        a[i] = temp[i];
     }
 
     delete[] count;
     count = nullptr;
+    delete[] temp;
+    temp = nullptr;
 }
