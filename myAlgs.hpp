@@ -331,15 +331,9 @@ void countingSort(int *a, int n)
         count[i] += count[i-1];
     }
 
-    for (int i = range - 2; i >= 0; i--)
-    {
-        count[i+1] = count[i];
-    }
-    count[0] = 0;
-
     for (int i = 0; i < n; i++) //visualize to understand.
     {
-        temp[count[a[i] - min]++] = a[i];
+        temp[count[a[i] - min]-- - 1] = a[i];
     }
 
     for (int i = 0; i < n; i++)
