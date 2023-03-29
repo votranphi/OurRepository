@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <math.h>
+#include <algorithm>
 #include "myAlgs.hpp"
 using namespace std;
 
