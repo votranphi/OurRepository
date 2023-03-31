@@ -7,13 +7,13 @@ using namespace std;
 
 int getInteger()
 {
-    return 1000000 + rand() % 1000001;
+    return 100000;
 }
 void generateArray(int *a, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        a[i] = pow(-1, rand() % 2) * rand();
+        a[i] = pow(-1, rand() % 2) * (rand() + 0);
     }
 }
 void arrayCopy(int *a, int *b, int n) //copy array b[] to array a[].
@@ -25,7 +25,7 @@ void arrayCopy(int *a, int *b, int n) //copy array b[] to array a[].
 }
 void menu()
 {
-    cout<<"\n-----------MENU-----------"<<endl;
+    cout<<"-----------MENU-----------"<<endl;
     cout<<"01. Quick Sort."<<endl;
     cout<<"02. Merge Sort."<<endl;
     cout<<"03. Binary Insertion Sort."<<endl;
@@ -41,6 +41,18 @@ void menu()
 
 int main()
 {
+    string algName[] =
+        {"Quick Sort"
+        , "Merge Sort"
+        , "Binary Insertion Sort"
+        , "Insertion Sort"
+        , "Bubble Sort"
+        , "Selection Sort"
+        , "Shell Sort"
+        , "Interchange Sort"
+        , "Cocktail/Shaker Sort"
+        , "Counting Sort"
+        , "Radix Sort"};
     string s;
     clock_t start, end;
     short choose;
@@ -51,6 +63,8 @@ int main()
     
     do
     {
+        system("cls");
+
         arrayCopy(a, b, n);
         menu();
 
@@ -123,7 +137,7 @@ int main()
                 break;
         }
 
-        cout<<"Processing time: "<<(double)(end - start) / 1000<<"s"<<endl;
+        cout<<"Processing time using "<<algName[choose - 1]<<": "<<(double)(end - start) / 1000<<"s"<<endl;
 
         cout<<"Do you want to continue (type Y or N): ";
         cin.ignore();
@@ -135,6 +149,8 @@ int main()
         }
     }
     while (s == "y" || s == "Y");
+
+    cout<<"-----------PROGRAM END-----------";
 
     delete[] a;
     a = nullptr;
