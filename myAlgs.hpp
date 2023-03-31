@@ -279,20 +279,6 @@ void cocktailSort(int *a, int n) //or shakerSort
         }
     }
 }
-int maxElement(int *a, int n)
-{
-    int maxElement = a[0];
-
-    for (int i = 1; i < n; i++)
-    {
-        if (maxElement < a[i])
-        {
-            maxElement = a[i];
-        }
-    }
-
-    return maxElement;
-}
 int minElement(int *a, int n)
 {
     int minElement = a[0];
@@ -307,10 +293,24 @@ int minElement(int *a, int n)
 
     return minElement;
 }
+int maxElement(int *a, int n)
+{
+    int maxElement = a[0];
+
+    for (int i = 1; i < n; i++)
+    {
+        if (maxElement < a[i])
+        {
+            maxElement = a[i];
+        }
+    }
+
+    return maxElement;
+}
 void countingSort(int *a, int n)
 {
-    int max = maxElement(a, n);
     int min = minElement(a, n);
+    int max = maxElement(a, n);
     int range = max - min + 1;
 
     int *count = new int [range];
@@ -345,4 +345,54 @@ void countingSort(int *a, int n)
     count = nullptr;
     delete[] temp;
     temp = nullptr;
+}
+void countingSortByDigit(int *a, int n, int digitPlace)
+{
+    int min = -9;
+    int max = 9;
+    int range = max - min + 1;
+
+    int *count = new int [range];
+    int *temp = new int [n];
+
+    for (int i = 0; i < range; i++)
+    {
+        count[i] = 0;
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        count[(a[i] / digitPlace) % 10 - min]++;
+    }
+
+    for (int i = 1; i < range; i++)
+    {
+        count[i] += count[i-1];
+    }
+
+    for (int i = range - 1; i >= 0; i--) //visualize to understand.
+    {
+        temp[count[(a[i] / digitPlace) % 10 - min]-- - 1] = a[i];
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        a[i] = temp[i];
+    }
+
+    delete[] count;
+    count = nullptr;
+    delete[] temp;
+    temp = nullptr;
+}
+void radixSort(int *a, int n)
+{
+    int absMin = abs(minElement(a, n));
+    int absMax = abs(maxElement(a, n));
+    int max = absMax > absMin ? absMax : absMin;
+
+    for (int digitPlace = 1; max / digitPlace > 0; digitPlace *= 10)
+    {
+        countingSortByDigit(a, n, digitPlace);
+    }
 }
