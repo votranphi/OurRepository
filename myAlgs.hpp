@@ -370,7 +370,7 @@ void countingSortByDigit(int *a, int n, int digitPlace)
         count[i] += count[i-1];
     }
 
-    for (int i = range - 1; i >= 0; i--) //visualize to understand.
+    for (int i = n - 1; i >= 0; i--) //visualize to understand.
     {
         temp[count[(a[i] / digitPlace) % 10 - min]-- - 1] = a[i];
     }
