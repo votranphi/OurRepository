@@ -7,7 +7,7 @@ using namespace std;
 
 int getInteger()
 {
-    return 100000;
+    return 1000000;
 }
 void generateArray(int *a, int n)
 {
