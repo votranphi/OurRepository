@@ -42,17 +42,19 @@ void menu()
 int main()
 {
     string algName[] =
-        {"Quick Sort"
-        , "Merge Sort"
-        , "Binary Insertion Sort"
-        , "Insertion Sort"
-        , "Bubble Sort"
-        , "Selection Sort"
-        , "Shell Sort"
-        , "Interchange Sort"
-        , "Cocktail/Shaker Sort"
-        , "Counting Sort"
-        , "Radix Sort"};
+    {
+        "Quick Sort", 
+        "Merge Sort", 
+        "Binary Insertion Sort", 
+        "Insertion Sort", 
+        "Bubble Sort", 
+        "Selection Sort", 
+        "Shell Sort", 
+        "Interchange Sort", 
+        "Cocktail/Shaker Sort", 
+        "Counting Sort", 
+        "Radix Sort"
+    };
     string s;
     clock_t start, end;
     short choose;
