@@ -5,9 +5,10 @@
 #include "myAlgs.hpp"
 using namespace std;
 
-int getInteger()
+void getInteger(int &n)
 {
-    return 1000000;
+    cout<<"Please enter number of elements in array: ";
+    cin>>n;
 }
 void generateArray(int *a, int n)
 {
@@ -37,6 +38,7 @@ void menu()
     cout<<"09. Cocktail/Shaker Sort."<<endl;
     cout<<"10. Counting Sort."<<endl;
     cout<<"11. Radix Sort."<<endl;
+    cout<<"12. Heap Sort."<<endl;
 }
 
 int main()
@@ -53,16 +55,18 @@ int main()
         "Interchange Sort", 
         "Cocktail/Shaker Sort", 
         "Counting Sort", 
-        "Radix Sort"
+        "Radix Sort", 
+        "Heap Sort"
     };
     string s;
     clock_t start, end;
     short choose;
-    int n = getInteger();
+    int n;
+    getInteger(n);
     int *a = new int [n];
     int *b = new int [n];
     generateArray(b, n);
-    
+
     do
     {
         system("cls");
@@ -72,7 +76,7 @@ int main()
 
         cout<<"Please choose one algorithm which you want to calculate the processing time: ";
         cin>>choose;
-        while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5 && choose != 6 && choose != 7 && choose != 8 && choose != 9 && choose != 10 && choose != 11)
+        while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5 && choose != 6 && choose != 7 && choose != 8 && choose != 9 && choose != 10 && choose != 11 && choose != 12)
         {
             cout<<"There's no algorithm number "<<choose<<". Please choose again: ";
             cin>>choose;
@@ -135,6 +139,11 @@ int main()
             case 11:
                 start = clock();
                 radixSort(a, n);
+                end = clock();
+                break;
+            case 12:
+                start = clock();
+                heapSort(a, n);
                 end = clock();
                 break;
         }
