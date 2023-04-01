@@ -174,9 +174,11 @@ void binaryInsertionSort(int *a, int n)
 void selectionSort(int *a, int n)
 {
     int minIndex;
+
     for (int i = 0; i < n; i++)
     {
         minIndex = i;
+
         for (int j = i + 1; j < n; j++)
         {
             if (a[j] < a[minIndex])
@@ -184,6 +186,7 @@ void selectionSort(int *a, int n)
                 minIndex = j;
             }
         }
+
         swap(a[i], a[minIndex]);
     }
 }
