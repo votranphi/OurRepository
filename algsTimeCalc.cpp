@@ -154,7 +154,7 @@ int main()
                 break;
         }
 
-        cout<<"Sorted array: "<<endl;
+        cout<<"Sorted array: ";
         arrayOutput(a, n);
         cout<<endl;
 
