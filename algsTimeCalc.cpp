@@ -28,7 +28,7 @@ void arrayOutput(int *a, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        cout<<a[i]<<" ";
+        printf("%i ", a[i]);
     }
 }
 void menu()
