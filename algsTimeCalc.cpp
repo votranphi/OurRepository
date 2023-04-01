@@ -10,11 +10,11 @@ void getInteger(int &n)
     cout<<"Please enter number of elements in array: ";
     cin>>n;
 }
-void generateArray(int *a, int n)
+void arrayGenerator(int *a, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        a[i] = pow(-1, rand() % 2) * (rand() + 1000000);
+        a[i] = pow(-1, rand() % 2) * (rand() % 10001);
     }
 }
 void arrayCopy(int *a, int *b, int n) //copy array b[] to array a[].
@@ -22,6 +22,13 @@ void arrayCopy(int *a, int *b, int n) //copy array b[] to array a[].
     for (int i = 0; i < n; i++)
     {
         a[i] = b[i];
+    }
+}
+void arrayOutput(int *a, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout<<a[i]<<" ";
     }
 }
 void menu()
@@ -60,12 +67,11 @@ int main()
     };
     string s;
     clock_t start, end;
-    short choose;
-    int n;
+    int choose, n;
     getInteger(n);
     int *a = new int [n];
     int *b = new int [n];
-    generateArray(b, n);
+    arrayGenerator(b, n);
 
     do
     {
@@ -148,6 +154,10 @@ int main()
                 break;
         }
 
+        cout<<"Sorted array: "<<endl;
+        arrayOutput(a, n);
+        cout<<endl;
+
         cout<<"Processing time using "<<algName[choose - 1]<<": "<<(double)(end - start) / 1000<<"s"<<endl;
 
         cout<<"Do you want to continue (type Y or N): ";
@@ -161,6 +171,7 @@ int main()
     }
     while (s == "y" || s == "Y");
 
+    system("cls");
     cout<<"-----------PROGRAM END-----------";
 
     delete[] a;
