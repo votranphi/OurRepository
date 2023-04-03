@@ -85,7 +85,7 @@ void addAfter(List &list, int target, int value)
         }
         else
         {
-            std::cout<<"List doesn't have "<<target;
+            std::cout<<"There's no "<<target<<" in the list!";
             return;
         }
     }
