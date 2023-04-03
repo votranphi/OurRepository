@@ -73,7 +73,7 @@ void addAfter(List &list, int target, int value)
 
     if (isEmpty(list))
     {
-        addToEmpty(list, value);
+        std::cout<<"List is empty!";
         return;
     }
 
