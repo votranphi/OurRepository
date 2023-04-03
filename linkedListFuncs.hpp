@@ -71,15 +71,35 @@ void addAfter(List &list, int target, int value)
     Node *temp = list.head;
     Node *newNode = createNode(value);
 
+    if (isEmpty(list))
+    {
+        addToEmpty(list, value);
+        return;
+    }
+
     while (temp->data != target)
     {
-        temp = temp->next;
+        if (temp != list.tail)
+        {
+            temp = temp->next;
+        }
+        else
+        {
+            std::cout<<"List doesn't have "<<target;
+            return;
+        }
+    }
+
+    if (temp == list.tail)
+    {
+        addTail(list, value);
+        return;
     }
 
     newNode->next = temp->next;
     temp->next = newNode;
 }
-void addBefore(List &list, int target, int value)
+void addBefore(List &list, int target, int value) //incomplete
 {
     Node *temp = list.head;
     Node *newNode = createNode(value);
@@ -101,12 +121,40 @@ void addBefore(List &list, int target, int value)
 void deleteHead(List &list)
 {
     Node *temp = list.head;
+
+    if (isEmpty(list))
+    {
+        std::cout<<"List is empty!";
+        return;
+    }
+
+    if (list.head == list.tail)
+    {
+        delete temp;
+        initiateList(list);
+        return;
+    }
+
     list.head = list.head->next;
+    temp->next = nullptr;
     delete temp;
 }
 void deleteTail(List &list)
 {
     Node *temp = list.head;
+
+    if (isEmpty(list))
+    {
+        std::cout<<"List is empty!";
+        return;
+    }
+
+    if (list.head == list.tail)
+    {
+        delete temp;
+        initiateList(list);
+        return;
+    }
     
     while (temp->next != list.tail)
     {
@@ -122,6 +170,26 @@ void deleteNode(List &list, int target)
 {
     Node *temp = list.head;
 
+    if (isEmpty(list))
+    {
+        std::cout<<"List is empty!";
+        return;
+    }
+
+    if (list.head == list.tail)
+    {
+        if (list.head->data == target)
+        {
+            delete temp;
+            initiateList(list);
+            return;
+        }
+        else
+        {
+            return;
+        }
+    }
+
     if (temp->data == target)
     {
         deleteHead(list);
@@ -130,7 +198,21 @@ void deleteNode(List &list, int target)
 
     while (temp->next->data != target)
     {
-        temp = temp->next;
+        if (temp->next != list.tail)
+        {
+            temp = temp->next;
+        }
+        else
+        {
+            std::cout<<"There's no number "<<target<<" to delete";
+            return;
+        }
+    }
+
+    if (temp->next == list.tail)
+    {
+        deleteTail(list);
+        return;
     }
 
     Node *temp1 = temp->next;
