@@ -186,6 +186,7 @@ void deleteNode(List &list, int target)
         }
         else
         {
+            std::cout<<"There's no number "<<target<<" to delete";
             return;
         }
     }
