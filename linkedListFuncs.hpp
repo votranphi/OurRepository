@@ -47,6 +47,7 @@ void addHead(List &list, int value)
     else
     {
         Node *newNode = createNode(value);
+
         newNode->next = list.head;
         list.head = newNode;
     }
@@ -60,6 +61,7 @@ void addTail(List &list, int value)
     else
     {
         Node *newNode = createNode(value);
+
         list.tail->next = newNode;
         list.tail = newNode;
     }
@@ -135,7 +137,7 @@ void deleteNode(List &list, int target)
     temp->next = temp->next->next;
     delete temp1;
 }
-void printList(List list)
+void printList(List &list)
 {
     if (isEmpty(list))
     {
@@ -143,10 +145,11 @@ void printList(List list)
         return;
     }
 
-    while (list.head != nullptr)
+    Node *temp = list.head;
+    while (temp != nullptr)
     {
-        std::cout<<list.head->data<<" ";
-        list.head = list.head->next;
+        std::cout<<temp->data<<" ";
+        temp = temp->next;
     }
 }
 void destroyList(List &list)
