@@ -154,9 +154,9 @@ int main()
                 break;
         }
 
-        cout<<"Sorted array: ";
-        arrayOutput(a, n);
-        cout<<endl;
+        // cout<<"Sorted array: ";
+        // arrayOutput(a, n);
+        // cout<<endl;
 
         cout<<"Processing time using "<<algName[choose - 1]<<": "<<(double)(end - start) / 1000<<"s"<<endl;
 
