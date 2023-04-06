@@ -28,7 +28,7 @@ void arrayOutput(int *a, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        printf("%i ", a[i]);
+        printf("%d ", a[i]);
     }
 }
 void menu()
@@ -99,7 +99,7 @@ int main()
                 break;
             case 2:
                 start = clock();
-                mergeSort(a, 0, n - 1);
+                mergeSort1(a, 0, n - 1);
                 end = clock();
                 break;
             case 3:

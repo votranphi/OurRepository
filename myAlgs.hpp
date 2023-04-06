@@ -36,7 +36,7 @@ void quickSort(int *a, int left, int right)
         quickSort(a, i, right);
     }
 }
-void merge(int *a, int left, int mid, int right)
+void merge(int *a, int left, int mid, int right) //more easy to understand
 {   
     int i = left, j = mid + 1, k = left;
     int *temp = new int [right + 1];
@@ -78,6 +78,59 @@ void mergeSort(int *a, int left, int right)
         mergeSort(a, left, mid);
         mergeSort(a, mid + 1, right);
         merge(a, left, mid, right);
+    }
+}
+void merge1(int *a, int left, int mid, int right) //more memory-efficent
+{
+    int i = 0, j = 0, k = left;
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    int *subArray1 = new int [n1];
+    int *subArray2 = new int [n2];
+
+    for (int i = 0; i < n1; i++)
+    {
+        subArray1[i] = a[i + left];
+    }
+    for (int i = 0; i < n2; i++)
+    {
+        subArray2[i] = a[i + mid + 1];
+    }
+
+    while (i < n1 && j < n2)
+    {
+        if (subArray1[i] <= subArray2[j])
+        {
+            a[k++] = subArray1[i++];
+        }
+        else
+        {
+            a[k++] = subArray2[j++];
+        }
+    }
+
+    while (i < n1)
+    {
+        a[k++] = subArray1[i++];
+    }
+    while (j < n2)
+    {
+        a[k++] = subArray2[j++];
+    }
+
+    delete[] subArray1;
+    subArray1 = nullptr;
+    delete[] subArray2;
+    subArray2 = nullptr;
+}
+void mergeSort1(int *a, int left, int right)
+{
+    if (left < right)
+    {
+        int mid = (left + right) / 2;
+        mergeSort1(a, left, mid);
+        mergeSort1(a, mid + 1, right);
+        merge1(a, left, mid, right);
     }
 }
 int binarySearch(int *a, int n, int x) //not using recursion
