@@ -130,8 +130,8 @@ void deleteHead(List &list)
 
     if (list.head == list.tail)
     {
-        delete temp;
         initiateList(list);
+        delete temp;
         return;
     }
 
@@ -151,8 +151,8 @@ void deleteTail(List &list)
 
     if (list.head == list.tail)
     {
-        delete temp;
         initiateList(list);
+        delete temp;
         return;
     }
     
@@ -180,8 +180,8 @@ void deleteNode(List &list, int target)
     {
         if (list.head->data == target)
         {
-            delete temp;
             initiateList(list);
+            delete temp;
             return;
         }
         else
@@ -218,6 +218,7 @@ void deleteNode(List &list, int target)
 
     Node *temp1 = temp->next;
     temp->next = temp->next->next;
+    temp1->next = nullptr;
     delete temp1;
 }
 void printList(List &list)
