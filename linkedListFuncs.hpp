@@ -233,7 +233,7 @@ void printList(List &list)
     Node *temp = list.head;
     while (temp != nullptr)
     {
-        std::cout<<temp->data<<" ";
+        cout<<temp->data<<" ";
         temp = temp->next;
     }
 }
