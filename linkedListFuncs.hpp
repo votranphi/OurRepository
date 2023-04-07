@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+using namespace std;
 
 struct Node
 {
@@ -25,7 +26,7 @@ Node *createNode(int value)
 
     if (result == nullptr)
     {
-        std::cout<<"Create node unsuccessfully!";
+        cout<<"Create node unsuccessfully!"<<endl;
         return nullptr;
     }
 
@@ -73,7 +74,7 @@ void addAfter(List &list, int target, int value)
 
     if (isEmpty(list))
     {
-        std::cout<<"List is empty!";
+        cout<<"List is empty!"<<endl;
         return;
     }
 
@@ -85,7 +86,7 @@ void addAfter(List &list, int target, int value)
         }
         else
         {
-            std::cout<<"There's no "<<target<<" in the list!";
+            cout<<"There's no "<<target<<" in the list!"<<endl;
             return;
         }
     }
@@ -124,7 +125,7 @@ void deleteHead(List &list)
 
     if (isEmpty(list))
     {
-        std::cout<<"List is empty!";
+        cout<<"List is empty!"<<endl;
         return;
     }
 
@@ -145,7 +146,7 @@ void deleteTail(List &list)
 
     if (isEmpty(list))
     {
-        std::cout<<"List is empty!";
+        cout<<"List is empty!"<<endl;
         return;
     }
 
@@ -172,7 +173,7 @@ void deleteNode(List &list, int target)
 
     if (isEmpty(list))
     {
-        std::cout<<"List is empty!";
+        cout<<"List is empty!"<<endl;
         return;
     }
 
@@ -186,7 +187,7 @@ void deleteNode(List &list, int target)
         }
         else
         {
-            std::cout<<"There's no number "<<target<<" to delete";
+            cout<<"There's no number "<<target<<" to delete"<<endl;
             return;
         }
     }
@@ -205,7 +206,7 @@ void deleteNode(List &list, int target)
         }
         else
         {
-            std::cout<<"There's no number "<<target<<" to delete";
+            cout<<"There's no number "<<target<<" to delete"<<endl;
             return;
         }
     }
@@ -225,7 +226,7 @@ void printList(List &list)
 {
     if (isEmpty(list))
     {
-        std::cout<<"List is empty!";
+        cout<<"List is empty!"<<endl;
         return;
     }
 
