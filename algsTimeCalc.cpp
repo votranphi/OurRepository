@@ -8,7 +8,7 @@ using namespace std;
 void setN(int &n)
 {
     cout<<"Please enter number of elements in array: ";
-    cin>>n;
+    scanf("%d", &n);
 }
 void arrayGenerator(int *a, int n)
 {
