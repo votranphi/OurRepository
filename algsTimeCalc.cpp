@@ -5,7 +5,7 @@
 #include "myAlgs.hpp"
 using namespace std;
 
-void getInteger(int &n)
+void setN(int &n)
 {
     cout<<"Please enter number of elements in array: ";
     cin>>n;
@@ -68,7 +68,7 @@ int main()
     string s;
     clock_t start, end;
     int choose, n;
-    getInteger(n);
+    setN(n);
     int *a = new int [n];
     int *b = new int [n];
     arrayGenerator(b, n);
