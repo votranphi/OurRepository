@@ -245,7 +245,7 @@ void selectionSort(int *a, int n)
 }
 void bubbleSort(int *a, int n)
 {
-    bool flag;
+    bool flag; //use to stop sorting when "step" is not "n - 1" and the array has already sorted.
 
     for (int step = 1; step < n; step++)
     {
@@ -305,7 +305,7 @@ void interchangeSort(int *a, int n)
 }
 void cocktailSort(int *a, int n) //or shakerSort
 {
-    bool flag;
+    bool flag; //use to stop sorting when "step" is not "n / 2" and the array has already sorted.
     int j;
 
     for (int step = 1; step <= n / 2; step++)
@@ -502,7 +502,7 @@ void combSort(int *a, int n)
 {
     int gap = n;
 
-    bool flag = true;
+    bool flag = true; //use to stop sorting when gap = 1.
 
     while (gap != 1 || flag == true)
     {
