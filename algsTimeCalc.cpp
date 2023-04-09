@@ -46,6 +46,7 @@ void menu()
     cout<<"10. Counting Sort."<<endl;
     cout<<"11. Radix Sort."<<endl;
     cout<<"12. Heap Sort."<<endl;
+    cout<<"13. Comb Sort."<<endl;
 }
 
 int main()
@@ -63,7 +64,8 @@ int main()
         "Cocktail/Shaker Sort", 
         "Counting Sort", 
         "Radix Sort", 
-        "Heap Sort"
+        "Heap Sort", 
+        "Comb Sort"
     };
     string s;
     clock_t start, end;
@@ -82,7 +84,7 @@ int main()
 
         cout<<"Please choose one algorithm which you want to calculate the processing time: ";
         cin>>choose;
-        while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5 && choose != 6 && choose != 7 && choose != 8 && choose != 9 && choose != 10 && choose != 11 && choose != 12)
+        while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5 && choose != 6 && choose != 7 && choose != 8 && choose != 9 && choose != 10 && choose != 11 && choose != 12 && choose != 13)
         {
             cout<<"There's no algorithm number "<<choose<<". Please choose again: ";
             cin>>choose;
@@ -150,6 +152,11 @@ int main()
             case 12:
                 start = clock();
                 heapSort(a, n);
+                end = clock();
+                break;
+            case 13:
+                start = clock();
+                combSort(a, n);
                 end = clock();
                 break;
         }

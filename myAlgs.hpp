@@ -487,3 +487,36 @@ void heapSort(int *a, int n)
         heapify(a, i, 0);
     }
 }
+int getNextGap(int gap)
+{
+    gap = (gap * 10) / 13; //shrink factor k = 1.3
+  
+    if (gap < 1)
+    {
+        return 1;
+    }
+
+    return gap;
+}
+void combSort(int *a, int n)
+{
+    int gap = n;
+
+    bool flag = true;
+
+    while (gap != 1 || flag == true)
+    {
+        gap = getNextGap(gap);
+
+        flag = false;
+
+        for (int i = 0; i < n - gap; i++)
+        {
+            if (a[i] > a[i+gap])
+            {
+                swap(a[i], a[i+gap]);
+                flag = true;
+            }
+        }
+    }
+}
