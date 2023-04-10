@@ -170,3 +170,128 @@ void listNodesWithTwoChildren(Tree root)
         listNodesWithTwoChildren(root->right);
     }
 }
+int countNodes(Tree root)
+{
+    int count = 0;
+
+    if (root == nullptr)
+    {
+        return 0;
+    }
+    else
+    {
+        count++;
+        count += countNodes(root->left);
+        count += countNodes(root->right);
+    }
+
+    return count;
+}
+int countLeafs(Tree root)
+{
+    int count = 0;
+
+    if (root == nullptr)
+    {
+        return 0;
+    }
+
+    if (root->left == nullptr && root->right == nullptr)
+    {
+        count++;
+    }
+    else
+    {
+        count += countLeafs(root->left);
+        count += countLeafs(root->right);
+    }
+
+    return count;
+}
+int countInternalNodesIncludeRoot(Tree root)
+{
+    int count = 0;
+
+    if (root == nullptr)
+    {
+        return 0;
+    }
+
+    if (root->left != nullptr || root->right != nullptr)
+    {
+        count++;
+        count += countInternalNodesIncludeRoot(root->left);
+        count += countInternalNodesIncludeRoot(root->right);
+    }
+
+    return count;
+}
+int countInternalNodes(Tree root)
+{
+    int internalNodesIncludeRoot = countInternalNodesIncludeRoot(root);
+
+    if (internalNodesIncludeRoot == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return internalNodesIncludeRoot - 1;
+    }
+}
+int countOneChild(Tree root)
+{
+    int count = 0;
+    if (root == nullptr)
+    {
+        return 0;
+    }
+
+    if (root->left != nullptr && root->right == nullptr)
+    {
+        count++;
+        count += countOneChild(root->left);
+    }
+
+    if (root->left == nullptr && root->right != nullptr)
+    {
+        count++;
+        count += countOneChild(root->right);
+    }
+
+    if (root->left != nullptr && root->right != nullptr)
+    {
+        count += countOneChild(root->left);
+        count += countOneChild(root->right);
+    }
+
+    return count;
+}
+int countTwoChildren(Tree root)
+{
+    int count = 0;
+
+    if (root == nullptr)
+    {
+        return 0;
+    }
+
+    if (root->left != nullptr && root->right != nullptr)
+    {
+        count++;
+        count += countTwoChildren(root->left);
+        count += countTwoChildren(root->right);
+    }
+
+    if (root->left != nullptr && root->right == nullptr)
+    {
+        count += countTwoChildren(root->left);
+    }
+
+    if (root->left == nullptr && root->right != nullptr)
+    {
+        count += countTwoChildren(root->right);
+    }
+    
+    return count;
+}
