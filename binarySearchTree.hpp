@@ -242,6 +242,7 @@ int countInternalNodes(Tree root)
 int countOneChild(Tree root)
 {
     int count = 0;
+
     if (root == nullptr)
     {
         return 0;
