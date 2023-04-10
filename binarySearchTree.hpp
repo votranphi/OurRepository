@@ -9,10 +9,6 @@ struct Node
     Node *right;
 };
 typedef Node* Tree;
-void initiateTree(Tree &root)
-{
-    root = nullptr;
-}
 Node *createNode(int value)
 {
     Node *result = new Node;
