@@ -120,6 +120,7 @@ void listInternalNodes(Tree root, bool value)
         {
             cout<<root->data<<" ";
         }
+
         listInternalNodes(root->left, value);
         listInternalNodes(root->right, value);
     }
