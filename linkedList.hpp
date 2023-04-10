@@ -32,6 +32,7 @@ Node *createNode(int value)
 
     result->data = value;
     result->next = nullptr;
+
     return result;
 }
 void addToEmpty(List &list, int value)
