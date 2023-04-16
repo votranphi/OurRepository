@@ -2,6 +2,7 @@
 #include <chrono>
 #include <math.h>
 #include <algorithm>
+#include <string>
 #include "myAlgs.hpp"
 using namespace std;
 
