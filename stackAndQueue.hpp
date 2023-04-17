@@ -50,16 +50,19 @@ void printStack(Stack &top)
 {
     if (isEmpty(top))
     {
-        cout << "Stack is empty!";
+        cout << "Stack is empty!" << endl;
         return;
     }
 
     Node *temp = top;
+
     while (temp != nullptr)
     {
-        cout << temp->data;
+        cout << temp->data << " ";
         temp = temp->next;
     }
+
+    cout << endl;
 }
 int peek(Stack &top)
 {
@@ -76,7 +79,7 @@ void pop(Stack &top)
 {
     if (isEmpty(top))
     {
-        cout << "Stack is empty! There's nothing to pop!";
+        cout << "Stack is empty!" << endl;
         return;
     }
 
@@ -125,11 +128,11 @@ void push(Queue &queue, const int &value)
         queue.back = newNode;
     }
 }
-void printStack(Queue &queue)
+void printQueue(Queue &queue)
 {
     if (isEmpty(queue))
     {
-        cout << "Queue iss empty!";
+        cout << "Queue is empty!" << endl;
         return;
     }
 
@@ -140,6 +143,8 @@ void printStack(Queue &queue)
         cout << temp->data << " ";
         temp = temp->next;
     }
+
+    cout << endl;
 }
 int front(Queue &queue)
 {
@@ -168,14 +173,22 @@ int back(Queue &queue)
 }
 void pop(Queue &queue)
 {
+    Node *temp = queue.front;
+
     if (isEmpty(queue))
     {
-        cout << "Queue is empty!";
+        cout << "Queue is empty!" << endl;
         return;
     }
 
-    Node *temp = queue.front;
+    if (queue.front == queue.back)
+    {
+        initiateQueue(queue);
+        delete temp;
+        return;
+    }
+
     queue.front = queue.front->next;
-    temp->next =nullptr;
+    temp->next = nullptr;
     delete temp;
 }
