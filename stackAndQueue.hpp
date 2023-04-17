@@ -50,7 +50,7 @@ void printStack(Stack &top)
 {
     if (isEmpty(top))
     {
-        cout << "Stack is empty";
+        cout << "Stack is empty!";
         return;
     }
 
@@ -65,7 +65,7 @@ int top(Stack &top)
 {
     if (isEmpty(top))
     {
-        cout << "Stack is empty";
+        cout << "Stack is empty!";
         return -1;
     }
     else
@@ -77,7 +77,7 @@ void pop(Stack &top)
 {
     if (isEmpty(top))
     {
-        cout << "Stack is empty";
+        cout << "Stack is empty! There's nothing to pop!";
         return;
     }
 
