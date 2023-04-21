@@ -20,7 +20,7 @@ bool isEmpty(List &list)
 {
     return list.head == nullptr && list.tail == nullptr;
 }
-Node *createNode(int value)
+Node *createNode(const int &value)
 {
     Node *result = new Node;
 
@@ -35,12 +35,12 @@ Node *createNode(int value)
 
     return result;
 }
-void addToEmpty(List &list, int value)
+void addToEmpty(List &list, const int &value)
 {
     Node *newNode = createNode(value);
     list.head = list.tail = newNode;
 }
-void addHead(List &list, int value)
+void addHead(List &list, const int &value)
 {
     if (isEmpty(list))
     {
@@ -54,7 +54,7 @@ void addHead(List &list, int value)
         list.head = newNode;
     }
 }
-void addTail(List &list, int value)
+void addTail(List &list, const int &value)
 {
     if (isEmpty(list))
     {
@@ -68,7 +68,7 @@ void addTail(List &list, int value)
         list.tail = newNode;
     }
 }
-void addAfter(List &list, int target, int value)
+void addAfter(List &list, const int &target, const int &value)
 {
     Node *temp = list.head;
     Node *newNode = createNode(value);
@@ -101,7 +101,7 @@ void addAfter(List &list, int target, int value)
     newNode->next = temp->next;
     temp->next = newNode;
 }
-void addBefore(List &list, int target, int value) //incomplete
+void addBefore(List &list, const int &target, const int &value) //incomplete
 {
     return;
 }
@@ -153,7 +153,7 @@ void deleteTail(List &list)
     list.tail = temp;
     delete temp1;
 }
-void deleteNode(List &list, int target)
+void deleteNode(List &list, const int &target)
 {
     Node *temp = list.head;
 
