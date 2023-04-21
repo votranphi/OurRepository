@@ -61,8 +61,6 @@ void printStack(Stack &top)
         cout << temp->data << " ";
         temp = temp->next;
     }
-
-    cout << endl;
 }
 int peek(Stack &top)
 {
@@ -143,8 +141,6 @@ void printQueue(Queue &queue)
         cout << temp->data << " ";
         temp = temp->next;
     }
-
-    cout << endl;
 }
 int front(Queue &queue)
 {

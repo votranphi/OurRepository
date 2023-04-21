@@ -9,7 +9,7 @@ struct Node
     Node *right;
 };
 typedef Node* Tree;
-Node *createNode(int value)
+Node *createNode(const int &value)
 {
     Node *result = new Node;
 
@@ -25,7 +25,7 @@ Node *createNode(int value)
 
     return result;
 }
-void addNode(Tree &root, int value)
+void addNode(Tree &root, const int &value)
 {
     if (root == nullptr)
     {
