@@ -173,7 +173,7 @@ void deleteNode(List &list, const int &target)
         }
         else
         {
-            cout<<"There's no number "<<target<<" to delete"<<endl;
+            cout<<"There's no number "<<target<<" to delete!"<<endl;
             return;
         }
     }
@@ -192,7 +192,7 @@ void deleteNode(List &list, const int &target)
         }
         else
         {
-            cout<<"There's no number "<<target<<" to delete"<<endl;
+            cout<<"There's no number "<<target<<" to delete!"<<endl;
             return;
         }
     }
@@ -207,6 +207,28 @@ void deleteNode(List &list, const int &target)
     temp->next = temp->next->next;
     temp1->next = nullptr;
     delete temp1;
+}
+Node *searchNode(List &list, const int &value)
+{
+    if (isEmpty(list))
+    {
+        cout << "List is empty!" << endl;
+        return nullptr;
+    }
+
+    Node *temp = list.head;
+    while (temp != nullptr && temp->data != value)
+    {
+        temp = temp->next;
+    }
+
+    if (temp == nullptr)
+    {
+        cout << "There's no number " << value << " in the list!" << endl;
+        return nullptr;
+    }
+
+    return temp;
 }
 void printList(List &list)
 {
@@ -233,4 +255,6 @@ void destroyList(List &list)
         delete temp;
         temp = list.head;
     }
+
+    initiateList(list); //for reusability
 }
