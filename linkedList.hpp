@@ -103,22 +103,7 @@ void addAfter(List &list, int target, int value)
 }
 void addBefore(List &list, int target, int value) //incomplete
 {
-    Node *temp = list.head;
-    Node *newNode = createNode(value);
-
-    if (temp->data == target)
-    {
-        addHead(list, value);
-        return;
-    }
-
-    while (temp->next->data != target)
-    {
-        temp = temp->next;
-    }
-
-    newNode->next = temp->next;
-    temp->next = newNode;
+    return;
 }
 void deleteHead(List &list)
 {
