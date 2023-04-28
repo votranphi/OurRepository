@@ -12,7 +12,7 @@ struct List
     Node *head;
     Node *tail;
 };
-void initiateList(List &list)
+void initializeList(List &list)
 {
     list.head = list.tail = nullptr;
 }
@@ -117,7 +117,7 @@ void deleteHead(List &list)
 
     if (list.head == list.tail)
     {
-        initiateList(list);
+        initializeList(list);
         delete temp;
         return;
     }
@@ -138,7 +138,7 @@ void deleteTail(List &list)
 
     if (list.head == list.tail)
     {
-        initiateList(list);
+        initializeList(list);
         delete temp;
         return;
     }
@@ -167,7 +167,7 @@ void deleteNode(List &list, const int &target)
     {
         if (list.head->data == target)
         {
-            initiateList(list);
+            initializeList(list);
             delete temp;
             return;
         }
@@ -256,5 +256,5 @@ void destroyList(List &list)
         temp = list.head;
     }
 
-    initiateList(list); //for reusability
+    initializeList(list); //for reusability
 }

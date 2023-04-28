@@ -13,7 +13,7 @@ bool isEmpty(Stack &top)
 {
     return top == nullptr;
 }
-void initiateStack(Stack &top)
+void initializeStack(Stack &top)
 {
     top = nullptr;
 }
@@ -85,7 +85,7 @@ void pop(Stack &top)
 
     if (top->next == nullptr)
     {
-        initiateStack(top);
+        initializeStack(top);
         delete temp;
         return;
     }
@@ -108,7 +108,7 @@ bool isEmpty(Queue &queue)
 {
     return queue.front == nullptr && queue.back == nullptr;
 }
-void initiateQueue(Queue &queue)
+void initializeQueue(Queue &queue)
 {
     queue.front = queue.back = nullptr;
 }
@@ -179,7 +179,7 @@ void pop(Queue &queue)
 
     if (queue.front == queue.back)
     {
-        initiateQueue(queue);
+        initializeQueue(queue);
         delete temp;
         return;
     }
