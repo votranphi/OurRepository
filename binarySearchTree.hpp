@@ -9,6 +9,7 @@ struct Node
     Node *right;
 };
 typedef Node* Tree;
+
 Node *createNode(const int &value)
 {
     Node *result = new Node;
@@ -82,95 +83,27 @@ void LNR(Tree root)
         LNR(root->right);
     }
 }
-void listLeafs(Tree root)
+Node *search(const Tree &tree, const int &target)
 {
-    if (root == nullptr)
+    if (tree == nullptr)
     {
-        return;
+        return nullptr;
     }
 
-    if (root->left == nullptr && root->right == nullptr)
+    if (target < tree->data)
     {
-        cout<<root->data<<" ";
+        return search(tree->left, target);
+    }
+    else if (target > tree->data)
+    {
+        return search(tree->right, target);
     }
     else
     {
-        listLeafs(root->left);
-        listLeafs(root->right);
+        return tree;
     }
 }
-void listInternalNodes(Tree root, bool value)
-{
-    if (root == nullptr)
-    {
-        return;
-    }
-
-    if (root->left != nullptr || root->right != nullptr)
-    {
-        if (value == 0)
-        {
-            value = 1;
-        }
-        else
-        {
-            cout<<root->data<<" ";
-        }
-
-        listInternalNodes(root->left, value);
-        listInternalNodes(root->right, value);
-    }
-}
-void listNodesWithOneChild(Tree root)
-{
-    if (root == nullptr)
-    {
-        return;
-    }
-
-    if (root->left != nullptr && root->right == nullptr)
-    {
-        cout<<root->data<<" ";
-        listNodesWithOneChild(root->left);
-    }
-
-    if (root->left == nullptr && root->right != nullptr)
-    {
-        cout<<root->data<<" ";
-        listNodesWithOneChild(root->right);
-    }
-
-    if (root->left != nullptr && root->right != nullptr)
-    {
-        listNodesWithOneChild(root->left);
-        listNodesWithOneChild(root->right);
-    }
-}
-void listNodesWithTwoChildren(Tree root)
-{
-    if (root == nullptr)
-    {
-        return;
-    }
-
-    if (root->left != nullptr && root->right != nullptr)
-    {
-        cout<<root->data<<" ";
-        listNodesWithTwoChildren(root->left);
-        listNodesWithTwoChildren(root->right);
-    }
-
-    if (root->left != nullptr && root->right == nullptr)
-    {
-        listNodesWithTwoChildren(root->left);
-    }
-
-    if (root->left == nullptr && root->right != nullptr)
-    {
-        listNodesWithTwoChildren(root->right);
-    }
-}
-int countNodes(Tree root)
+int countNodes(const Tree &root)
 {
     int count = 0;
 
@@ -187,112 +120,103 @@ int countNodes(Tree root)
 
     return count;
 }
-int countLeafs(Tree root)
+void deleteRoot(Tree &root)
 {
-    int count = 0;
-
     if (root == nullptr)
     {
-        return 0;
+        return;
     }
 
+    Node *temp = root;
     if (root->left == nullptr && root->right == nullptr)
     {
-        count++;
+        delete temp;
+        root = nullptr;
+        return;
     }
-    else
-    {
-        count += countLeafs(root->left);
-        count += countLeafs(root->right);
-    }
-
-    return count;
-}
-int countInternalNodesIncludeRoot(Tree root)
-{
-    int count = 0;
-
-    if (root == nullptr)
-    {
-        return 0;
-    }
-
-    if (root->left != nullptr || root->right != nullptr)
-    {
-        count++;
-        count += countInternalNodesIncludeRoot(root->left);
-        count += countInternalNodesIncludeRoot(root->right);
-    }
-
-    return count;
-}
-int countInternalNodes(Tree root)
-{
-    int internalNodesIncludeRoot = countInternalNodesIncludeRoot(root);
-
-    if (internalNodesIncludeRoot == 0)
-    {
-        return 0;
-    }
-    else
-    {
-        return internalNodesIncludeRoot - 1;
-    }
-}
-int countOneChild(Tree root)
-{
-    int count = 0;
-
-    if (root == nullptr)
-    {
-        return 0;
-    }
-
     if (root->left != nullptr && root->right == nullptr)
     {
-        count++;
-        count += countOneChild(root->left);
+        root = root->left;
+        temp->left = nullptr;
+        delete temp;
+        return;
     }
-
     if (root->left == nullptr && root->right != nullptr)
     {
-        count++;
-        count += countOneChild(root->right);
-    }
-
-    if (root->left != nullptr && root->right != nullptr)
-    {
-        count += countOneChild(root->left);
-        count += countOneChild(root->right);
-    }
-
-    return count;
-}
-int countTwoChildren(Tree root)
-{
-    int count = 0;
-
-    if (root == nullptr)
-    {
-        return 0;
-    }
-
-    if (root->left != nullptr && root->right != nullptr)
-    {
-        count++;
-        count += countTwoChildren(root->left);
-        count += countTwoChildren(root->right);
-    }
-
-    if (root->left != nullptr && root->right == nullptr)
-    {
-        count += countTwoChildren(root->left);
-    }
-
-    if (root->left == nullptr && root->right != nullptr)
-    {
-        count += countTwoChildren(root->right);
+        root = root->right;
+        temp->right = nullptr;
+        delete temp;
+        return;
     }
     
-    return count;
+    Node *replaceNode = root->right;
+    Node *prevReplaceNode = root;
+    while (replaceNode->left != nullptr)
+    {
+        prevReplaceNode = replaceNode;
+        replaceNode = replaceNode->left;
+    }
+
+    if (prevReplaceNode->left == replaceNode)
+    {
+        prevReplaceNode->left = replaceNode->right;
+    }
+    else
+    {
+        prevReplaceNode->right = replaceNode->right;
+    }
+
+    replaceNode->left = root->left;
+    replaceNode->right = root->right;
+    root->left = root->right = nullptr;
+    root = replaceNode;
+    delete temp;
+}
+// Phần tử thay thế là phần tử trái nhất trên cây con phải
+void findAndReplaceNode(Tree &root, Tree &replaceNode)
+{
+    if (replaceNode->left != nullptr)
+    {
+        findAndReplaceNode(root, replaceNode->left);
+    }
+    else
+    {
+        root->data = replaceNode->data;
+        root = replaceNode;
+        replaceNode = replaceNode->right;
+    }
+}
+void deleteNode(Tree &root, const int &target)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+
+    if (target < root->data)
+    {
+        deleteNode(root->left, target);
+    }
+    else if (target > root->data)
+    {
+        deleteNode(root->right, target);
+    }
+    else
+    {
+        Node *temp = root;
+        if (root->left == nullptr)
+        {
+            root = root->right;
+        }
+        else if (root->right == nullptr)
+        {
+            root = root->left;
+        }
+        else
+        {
+            findAndReplaceNode(temp, root->right);
+        }
+        delete temp;
+        return;
+    }
 }
