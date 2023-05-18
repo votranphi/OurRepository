@@ -3,6 +3,7 @@
 #include <math.h>
 #include <algorithm>
 #include <string>
+#include <time.h>
 #include "myAlgs.hpp"
 using namespace std;
 
@@ -13,12 +14,15 @@ void setN(int &n)
 }
 void arrayGenerator(int *a, int n)
 {
+    // time(nullptr) returns the current time as the number of seconds elapsed since the Unix epoch (00:00 January 1, 1970)
+    // srand() is used to seed the random number generator (rand() function) with a specified seed value
+    srand(time(nullptr));
     for (int i = 0; i < n; i++)
     {
         a[i] = pow(-1, rand() % 2) * (rand() % 10001);
     }
 }
-void arrayCopy(int *a, int *b, int n) //copy array b[] to array a[].
+void arrayCopy(int *a, int *b, int n) // copy array b[] to array a[].
 {
     for (int i = 0; i < n; i++)
     {
