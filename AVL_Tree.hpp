@@ -28,6 +28,24 @@ void rotateLeft(Tree &root)
     oldRoot->right = root->left;
     root->left = oldRoot;
 }
+void rotateRight(Tree &root)
+{
+    if (root == nullptr)
+    {
+        cout<< "Can't rotate left bcuz the tree is fucking empty!";
+        return;
+    }
+    if (root->left == nullptr)
+    {
+        cout<< "Can't rotate left bcuz there is no node left of the root!";
+        return;
+    }
+
+    Node *oldRoot = root;
+    root = root->left;
+    oldRoot->left = root->right;
+    root->right = oldRoot;
+}
 int depthOfTree(const Tree &root)
 {
     int depth = 0;
