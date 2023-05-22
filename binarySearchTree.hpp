@@ -120,6 +120,7 @@ int countNodes(const Tree &root)
 
     return count;
 }
+// Phần tử thay thế là phần tử trái nhất trên cây con phải
 void deleteRoot(Tree &root)
 {
     if (root == nullptr)
