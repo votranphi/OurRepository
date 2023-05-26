@@ -120,7 +120,52 @@ int countNodes(const Tree &root)
 
     return count;
 }
-// Phần tử thay thế là phần tử trái nhất trên cây con phải
+bool isBST(const Tree &root)
+{
+    if (root == nullptr)
+    {
+        return true;
+    }
+
+    if (root->left != nullptr && root->right != nullptr)
+    {
+        if (root->left->data < root->data && root->right->data > root->data)
+        {
+            return isBST(root->left) && isBST(root->right);
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    if (root->left != nullptr && root->right == nullptr)
+    {
+        if (root->left->data < root->data)
+        {
+            return isBST(root->left);
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    if (root->left == nullptr && root->right != nullptr)
+    {
+        if (root->right->data > root->data)
+        {
+            return isBST(root->right);
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+// The replacement node is located all the way to the left on the right subtree
 void deleteRoot(Tree &root)
 {
     if (root == nullptr)
@@ -173,7 +218,7 @@ void deleteRoot(Tree &root)
     root = replaceNode;
     delete temp;
 }
-// Phần tử thay thế là phần tử trái nhất trên cây con phải
+// The replacement node is located all the way to the left on the right subtree
 void findAndReplaceNode(Tree &root, Tree &replaceNode)
 {
     if (replaceNode->left != nullptr)
