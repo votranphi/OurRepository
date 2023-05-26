@@ -122,11 +122,6 @@ int countNodes(const Tree &root)
 }
 bool isBST(const Tree &root)
 {
-    if (root == nullptr)
-    {
-        return true;
-    }
-
     if (root->left != nullptr && root->right != nullptr)
     {
         if (root->left->data < root->data && root->right->data > root->data)
