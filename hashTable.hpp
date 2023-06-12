@@ -107,3 +107,5 @@ void traverseAllHash(const Hash &H)
 }
 
 // Hash Table using Array with Linear probing Method
+
+// Hash Table using Array with Quadratic probing Method
