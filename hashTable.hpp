@@ -106,6 +106,8 @@ void traverseAllHash(const Hash &H)
     }
 }
 
-// Hash Table using Array with Linear probing Method
+// Hash Table using Array with Linear Probing Method
 
-// Hash Table using Array with Quadratic probing Method
+// Hash Table using Array with Quadratic Probing Method
+
+// Hash Table using Array with Double Hash Method
