@@ -83,6 +83,32 @@ void LNR(Tree root)
         LNR(root->right);
     }
 }
+void RNL(Tree root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+    else
+    {
+        RNL(root->right);
+        cout<<root->data<<" ";
+        RNL(root->left);
+    }
+}
+void NRL(Tree root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+    else
+    {
+        cout<<root->data<<" ";
+        NRL(root->right);
+        NRL(root->left);
+    }
+}
 Node *search(const Tree &tree, const int &target)
 {
     if (tree == nullptr)
